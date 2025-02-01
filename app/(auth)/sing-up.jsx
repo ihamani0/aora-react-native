@@ -47,7 +47,7 @@ const SingUp = () => {
             
             <KeyboardAvoidingView
             
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                behavior={Platform.OS === 'ios' ? 'padding' : ''}
                 style={{ flex: 1 }}
                 >
             

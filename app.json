@@ -15,21 +15,23 @@
     },
     "ios": {
       "supportsTablet": true,
-      "package" : "com.hmn.aora"
+      "package": "com.hmn.aora"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package" : "com.hmn.aora"
+      "package": "com.hmn.aora",
+      "permissions": ["INTERNET"]
     },
     "web": {
       "favicon": "./assets/react.png"
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      "expo-video"
     ]
   }
 }

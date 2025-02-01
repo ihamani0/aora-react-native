@@ -4,6 +4,7 @@ import { Tabs } from 'expo-router'
 
 
 import {icons} from '../../constants'
+import { StatusBar } from 'expo-status-bar'
 
 const TabIcon = ({icon , color , name , focused})=>{
 
@@ -32,11 +33,12 @@ const TabLayout = () => {
                 tabBarStyle : {
                     backgroundColor : '#161622',
                     borderTopColor : '#232533',
-                    borderTopWidth : 2,
+                    borderTopWidth : 1,
                     height : 60,
                     paddingBottom : 10,
                 }
             }}
+            
         >
 
             {/* -----------------Home------------------------ */}
@@ -44,6 +46,7 @@ const TabLayout = () => {
                 name='Home'
                 options={{
                     title : 'Home',
+                    headerShown: false,
                     tabBarIcon : ({color , focused})=>(
                         <TabIcon 
                             icon  = {icons.home}
@@ -59,6 +62,7 @@ const TabLayout = () => {
                 name='Create'
                 options={{
                     title : 'Create',
+                    headerShown: false,
                     tabBarIcon : ({color , focused})=>(
                         <TabIcon 
                             icon  = {icons.plus}
@@ -74,6 +78,7 @@ const TabLayout = () => {
                 name='BookMark'
                 options={{
                     title : 'BookMark',
+                    headerShown: false,
                     tabBarIcon : ({color , focused})=>(
                         <TabIcon 
                             icon  = {icons.bookmark}
@@ -90,6 +95,7 @@ const TabLayout = () => {
                 name='Profile'
                 options={{
                     title : 'Profile',
+                    headerShown: false,
                     tabBarIcon : ({color , focused})=>(
                         <TabIcon 
                             icon  = {icons.profile}
@@ -102,7 +108,7 @@ const TabLayout = () => {
             />
 
 
-
+               
         </Tabs>
     )
 }

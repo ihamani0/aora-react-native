@@ -1,6 +1,7 @@
 import { View, StyleSheet} from 'react-native';
 import { SplashScreen, Stack } from 'expo-router';
 import {useFonts} from "expo-font"
+import GlobalProvider from '../context/GlobalContext';
 
 // Import your global CSS file
 import "../global.css";
@@ -51,7 +52,8 @@ export default function Root() {
     
 
 return (
-    <Stack>
+    <GlobalProvider>
+        <Stack>
         
         <Stack.Screen name='index' options={{
             headerShown: false
@@ -70,7 +72,9 @@ return (
                     }}/>  
 
         
-    </Stack>
+        </Stack>
+    </GlobalProvider>
+    
 )
 
 }

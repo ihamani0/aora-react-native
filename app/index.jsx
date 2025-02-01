@@ -5,19 +5,21 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import {images} from '../constants';
 import CostumButton from '../components/CostumButton';
 import { StatusBar } from 'expo-status-bar';
+import { useGlobalContext } from '../context/GlobalContext';
 
 
 
 export default function index() {
 
+    const {isLogedin , isLoding} = useGlobalContext();
 
+    
+
+    if (isLogedin && !isLoding) {
+        return <Redirect href='/Home' />;
+    }
 
     return (
-        // <View className="flex-1 p-4 bg-white ">
-
-        //     <Link href="/(tabs)/Home" style={{color:'blue' ,textAlign:'center'}}>Tabs</Link>
-        //     <Button title='Tabs' onPress={  ()=>router.push('/(tabs)/Home') }/>
-        // </View>
         <SafeAreaView className=" bg-primary h-full">
             <ScrollView
                 contentContainerStyle={{height: '100%'}}
