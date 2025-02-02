@@ -26,8 +26,9 @@ const FormField = ({title , value , placeholder , keyBoardType ,  onChangeText ,
                         value={value}
                         onChangeText={onChangeText}
                         secureTextEntry={title === 'Password' && !showPassword}
-                        // onFocus={()=> setIsFocused(true)}
-                        // onBlur={()=> setIsFocused(false)}
+
+                        onFocus={()=> setIsFocused(true)}
+                        onBlur={()=> setIsFocused(false)}
                         
                     />
 

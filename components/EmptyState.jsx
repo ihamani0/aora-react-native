@@ -5,7 +5,7 @@ import {images} from "../constants"
 
 import CostumButton from "../components/CostumButton"
 
-const EmptyState = ({title , subtitle}) => {
+const EmptyState = ({title , subtitle , showButton}) => {
     return (
         <View className='w-full px-4 justify-center items-center'>
             <Image
@@ -19,10 +19,16 @@ const EmptyState = ({title , subtitle}) => {
                 <Text className='text-gray-100 text-sm text-center font-pregular'>{subtitle}</Text>
             </View>
 
+
+            {showButton && (
+
             <CostumButton
                 title='Create Vidoes'
                 containerStyle='mb-2 w-full'
+                
             />
+            
+            )}
             
         </View>
     )

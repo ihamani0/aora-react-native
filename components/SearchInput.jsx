@@ -1,12 +1,33 @@
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import {icons} from '../constants'
+import { router, usePathname } from 'expo-router';
 
-const SearchInput = ({title , value , placeholder , keyBoardType ,  onChangeText , otherStyle , ...props }) => {
+const SearchInput = ({placeholder , otherStyle , initialQuery }) => {
     
 
     //for focusing in input
     const [isFocused , setIsFocused] = useState(false);
+
+    //state for searchBar
+    const [search , setSearch] = useState(initialQuery || '');
+
+    const path = usePathname();
+
+
+
+    const handleSearch = ()=>{
+        if(!search.trim()){
+            return  Alert.alert('Error' , 'Missing query !!')
+        }
+
+        if(path.startsWith('/search')){
+            router.setParams({search})
+        }else{
+            router.push(`/search/${search}`)
+        }
+        
+    }
     
     return (
         <View className={`'space-y-2 ' ${otherStyle}`}>
@@ -18,21 +39,25 @@ const SearchInput = ({title , value , placeholder , keyBoardType ,  onChangeText
                     <TextInput 
                         className="text-white h-full w-3/4 font-pregular text-base "
                         placeholder={placeholder}
-                        placeholderTextColor='#7B7B8B'
-                        keyboardType={keyBoardType}
-                        value={value}
-                        onChangeText={onChangeText}
-                        secureTextEntry={title === 'Password' && !showPassword}
+                        placeholderTextColor='#CDCDE0'
+
+                        value={search}
+                        onChangeText={setSearch}
+                        
                         onFocus={()=> setIsFocused(true)}
                         onBlur={()=> setIsFocused(false)}
                         
                     />
 
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                    
+                        onPress={handleSearch}
+                        >
                         <Image 
                             source={icons.search}
                             resizeMode='contain'
                             className='h-5 w-5'
+                            
                         />
                     </TouchableOpacity>
             </View>

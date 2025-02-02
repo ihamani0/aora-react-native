@@ -6,7 +6,8 @@ import {images} from '../../constants'
 import FormField from '../../components/FormField'
 import { Link, router } from 'expo-router'
 
-import { SingIn as sing_in } from "../../lib/appwriter"
+import { getCurrentUser, SingIn as sing_in } from "../../lib/appwriter"
+import { useGlobalContext } from '../../context/GlobalContext'
 
 
 const SingIn = () => {
@@ -14,9 +15,13 @@ const SingIn = () => {
     const [form , setForm] = useState({ email: "", password: "" })
 
 
+    const {setUser , setIsLogedin} = useGlobalContext()
+
     const [isSubmiting, setIsSubmiting] = useState(false)
 
+
     const SubmitForm = async ()=>{
+
         if(!form.email || !form.password ){
             Alert.alert("Error" , "please fill up all the fields")
         }
@@ -24,12 +29,16 @@ const SingIn = () => {
         setIsSubmiting(true) ;
         
         try{
-            const resulte = await sing_in(form.email , form.password)
+            
+            await sing_in(form.email , form.password)
 
-            //set it on global context 
+            const logedInUser = getCurrentUser()
+
+            setUser(logedInUser)
+            setIsLogedin(true)
 
 
-            //push router
+            //replace  router
             router.replace('/Home')
 
         }catch(e){

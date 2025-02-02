@@ -10,6 +10,7 @@ import { StatusBar } from 'expo-status-bar'
 import{getAllPost, getLatestPosts} from '../../lib/appwriter'
 import useAppWrtie from '../../lib/useAppWrite'
 import VideosCard from '../../components/VideosCard'
+import { useGlobalContext } from '../../context/GlobalContext'
 
 const Home = () => {
 
@@ -17,6 +18,7 @@ const Home = () => {
     const {data : posts , reFetchPosts} = useAppWrtie(getAllPost)
     const {data : Latestposts } = useAppWrtie(getLatestPosts)
 
+    const {user} = useGlobalContext();
 
 
     const [refreshing, setRefreshing] = useState(false);
@@ -52,7 +54,7 @@ const Home = () => {
                                     <Text className="font-pregular text-xl text-gray-100">
                                         Welcome Back</Text>
                                     <Text className="font-psemibold text-white text-2xl ">
-                                        HAMANI ISSAM</Text>
+                                        {user?.username}</Text>
                                 </View>
                                 <Image 
                                     source={images.logoSmall}

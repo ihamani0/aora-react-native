@@ -13,6 +13,9 @@ const SingUp = () => {
     const [form , setForm] = useState({ username : "" ,  email: "", password: "" })
 
 
+    const {setUser , setIsLogedin} = useGlobalContext()
+    
+
     const [isSubmiting, setIsSubmiting] = useState(false)
 
     const SubmitForm = async ()=>{
@@ -27,7 +30,10 @@ const SingUp = () => {
                     const resulte = await createUser(form.email , form.password , form.username )
         
                     //set it on global context 
-        
+                    const logedInUser = getCurrentUser()
+                    
+                    setUser(logedInUser)
+                    setIsLogedin(true)
         
                     //push router
                     router.replace('/Home')

@@ -32,7 +32,7 @@ const VideosCard = ({item : {title, thumbnail , video ,
                             </Text>
                         
                         <Text className='text-white font-pregular text-xs' >
-                            {username}</Text>
+                            {username ?? ''}</Text>
                     </View>
 
                 </View>
@@ -53,7 +53,7 @@ const VideosCard = ({item : {title, thumbnail , video ,
                 
                     source={{uri:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'}}
                     className='w-full h-60 rounded-lg px-4'
-                    resizeMode={ResizeMode.CONTAIN}
+                    resizeMode='contain'
                     useNativeControls
                     shouldPlay
                     onPlaybackStatusUpdate={(status) => {
